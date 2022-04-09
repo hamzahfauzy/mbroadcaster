@@ -12,6 +12,7 @@ return [
         'content' => [
             'label' => 'Mail Content',
             'type'  => 'textarea',
+            'attr'  => ['class'=>'form-control tinymce']
         ],
         'send_at' => [
             'label' => 'Send At',
