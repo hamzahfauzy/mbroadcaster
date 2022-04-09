@@ -25,7 +25,7 @@ if(request() == 'POST')
         }
     }
 
-    $db->update($table,$_POST[$table],[
+    $update = $db->update($table,$_POST[$table],[
         'id' => $_GET['id']
     ]);
 
@@ -53,14 +53,14 @@ if(request() == 'POST')
 
         if(isset($_POST['send']))
         {
-            if($insert->send_at == NULL)
+            if($update->send_at == NULL)
             {
                 $do_at = strtotime('+2 minutes');
                 $do_at = date('Y-m-d H:i', $do_at);
             }
             else
             {
-                $do_at = $insert->send_at;
+                $do_at = $update->send_at;
             }
 
             $db->insert('jobs',[

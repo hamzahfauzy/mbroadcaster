@@ -1,22 +1,22 @@
 <?php
 
-$menu = require '../config/menu.php';
-$icon_menu = require '../config/icon_menu.php';
-$tablefields = require '../config/tablefields.php';
+$menu = require 'menu.php';
+$icon_menu = require 'icon_menu.php';
+$tablefields = require 'tablefields.php';
 
 return [
-    'base_url' => 'http://localhost:8080',
+    'base_url' => 'http://localhost:8081',
     'default_page' => 'default/index',
     'database' => [
-        'driver'   => 'PDO',
+        'driver'   => 'mysqli',
         'host'     => 'localhost',
         'username' => 'root',
         'password' => '',
-        'dbname' => 'notifman_db', // 'notif-sql-1',
+        'dbname' => 'mbroadcaster_db', // 'notif-sql-1',
         'port' => NULL,
         'socket' => NULL
     ],
-    'auth' => '', //JWT or Session
+    'auth' => 'session', //JWT or Session
     'jwt_secret' => '123aaaa321',
     'jwt_cookie_name' => '',
     'app_domain_name' => '',
@@ -25,5 +25,6 @@ return [
         'icon' => $icon_menu
     ],
     'fields' => $tablefields,
-    'pretty_url' => false
+    'pretty_url' => true,
+    'attachment_path' => 'public'
 ];

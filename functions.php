@@ -526,7 +526,7 @@ function sendMail($subject, $recipients, $message, $attachments = [])
         //Attachments
         foreach($attachments as $attachment)
         {
-            $mail->addAttachment($attachment->file_url, $attachment->filename);         //Add attachments
+            $mail->addAttachment(config('attachment_path').'/'.$attachment->file_url, $attachment->filename);         //Add attachments
         }
 
         //Content
