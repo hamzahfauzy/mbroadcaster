@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH1=/home/applesec/bcemail.applesecondstuff.com
+    - /bin/cp -a * $DEPLOYPATH1
