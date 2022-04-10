@@ -3,7 +3,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-if (!(php_sapi_name() == "cli")) {
+if (!in_array(php_sapi_name(),["cli","cgi-fcgi"])) {
     require '../libs/JwtAuth.php';
     require '../libs/Form.php';
     require '../libs/ArrayHelper.php';

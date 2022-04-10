@@ -1,5 +1,5 @@
 <?php
-if (!(php_sapi_name() == "cli")) {
+if (!in_array(php_sapi_name(),["cli","cgi-fcgi"])) {
     die();
 }
 
