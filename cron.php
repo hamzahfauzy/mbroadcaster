@@ -10,7 +10,6 @@ require 'functions.php';
 
 // cron action
 $action = '';
-$argv = $_SERVER['argv'];
 foreach ($argv as $arg) {
     if(stringContains($arg,'cron.php')) continue;
     $action=$arg;
