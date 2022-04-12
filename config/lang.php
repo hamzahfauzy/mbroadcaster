@@ -15,7 +15,7 @@ return [
     'Send' => 'Kirim',
 
     'users'     => 'Pengguna',
-    'all users'     => 'Semua Pengguna',
+    'all users' => 'Semua Pengguna',
 
     'roles'     => 'Peran',
 
