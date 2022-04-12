@@ -2,20 +2,27 @@
 
 return [
     'customers'    => [
-        'name','email'
+        'name' => [
+            'label' => 'Nama',
+            'type'  => 'text'
+        ],
+        'email' => [
+            'label' => 'Email',
+            'type'  => 'text'
+        ],
     ],
     'messages' => [
         'title' => [
-            'label' => 'Title',
+            'label' => 'Judul',
             'type'  => 'text',
         ],
         'content' => [
-            'label' => 'Mail Content',
+            'label' => 'Isi Email',
             'type'  => 'textarea',
             'attr'  => ['class'=>'form-control tinymce']
         ],
         'send_at' => [
-            'label' => 'Send At',
+            'label' => 'Jadwal Kirim',
             'type'  => 'datetime-local',
             'attr'  => ['class'=>'form-control']
         ]

@@ -4,11 +4,11 @@
             <div class="page-inner py-5">
                 <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
                     <div>
-                        <h2 class="text-white pb-2 fw-bold"><?=_ucwords($table)?></h2>
-                        <h5 class="text-white op-7 mb-2">Manage <?=_ucwords($table)?> Data</h5>
+                        <h2 class="text-white pb-2 fw-bold"><?=_ucwords(__($table))?></h2>
+                        <h5 class="text-white op-7 mb-2"><?= __('Manage '._ucwords($table).' Data')?></h5>
                     </div>
                     <div class="ml-md-auto py-2 py-md-0">
-                        <a href="<?=routeTo('crud/create',['table'=>$table])?>" class="btn btn-secondary btn-round">Create <?=_ucwords($table)?></a>
+                        <a href="<?=routeTo('crud/create',['table'=>$table])?>" class="btn btn-secondary btn-round"><?=__('Create '._ucwords($table))?></a>
                     </div>
                 </div>
             </div>
@@ -65,8 +65,8 @@
                                             <td><?=$data_value?></td>
                                             <?php endforeach ?>
                                             <td>
-                                                <a href="<?=routeTo('crud/edit',['table'=>$table,'id'=>$data->id])?>" class="btn btn-sm btn-warning"><i class="fas fa-pencil-alt"></i> Edit</a>
-                                                <a href="<?=routeTo('crud/delete',['table'=>$table,'id'=>$data->id])?>" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i> Delete</a>
+                                                <a href="<?=routeTo('crud/edit',['table'=>$table,'id'=>$data->id])?>" class="btn btn-sm btn-warning"><i class="fas fa-pencil-alt"></i> <?= __('Edit')?></a>
+                                                <a href="<?=routeTo('crud/delete',['table'=>$table,'id'=>$data->id])?>" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i> <?= __('Delete')?></a>
                                             </td>
                                         </tr>
                                         <?php endforeach ?>

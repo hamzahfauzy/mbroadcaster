@@ -3,14 +3,14 @@
             <nav class="pull-left">
                 <ul class="nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="https://htd-official.com">
-                            Hamzah Tech Development
+                        <a class="nav-link" href="https://hosterweb.id/">
+                            HosterWeb
                         </a>
                     </li>
                 </ul>
             </nav>
             <div class="copyright ml-auto">
-                Copyright &copy; 2021, made with <i class="fa fa-heart heart text-danger"></i> by <a href="https://www.htd-official.com">HTD</a>
+                Copyright &copy; 2021, made with <i class="fa fa-heart heart text-danger"></i> by <a href="https://hosterweb.id/">HosterWeb</a>
             </div>				
         </div>
     </footer>
@@ -63,6 +63,7 @@
     <script>
       tinymce.init({
         selector: '.tinymce',
+		images_upload_url: '<?=routeTo('crud/upload')?>',
         plugins: [
           'a11ychecker','advlist','advcode','advtable','autolink','checklist','export',
           'lists','link','image','charmap','preview','anchor','searchreplace','visualblocks',

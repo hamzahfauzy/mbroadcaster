@@ -89,7 +89,7 @@ function generated_menu($user_id)
                     $active = startWith($r, $start_route)||(isset($_GET['table'])&&$_GET['table']==$key);
                 $dropdown .= '<li class="'.(startWith($r, $start_route)?'active':'').'">
                                 <a href="'.routeTo().$submenu.'">
-                                    <span class="sub-item">'.ucwords($label).'</span>
+                                    <span class="sub-item">'.ucwords(__($label)).'</span>
                                 </a>
                             </li>';
             }
@@ -97,7 +97,7 @@ function generated_menu($user_id)
             $dropdown = '<li class="nav-item '.($active?'active submenu':'').'">
                             <a data-toggle="collapse" href="#'.$key.'" aria-expanded="'.($active?'true':'').'">
                                 <i class="'.$icon[$key].'"></i>
-                                <p>'.ucwords($key).'</p>
+                                <p>'.ucwords(__($key)).'</p>
                                 <span class="caret"></span>
                             </a>
                             <div class="collapse '.($active?'show':'').'" id="'.$key.'">
@@ -117,7 +117,7 @@ function generated_menu($user_id)
             $generated .= '<li class="nav-item '.($active?'active':'').'">
                                 <a href="'.routeTo().$route.'">
                                     <i class="'.$icon[$key].'"></i>
-                                    <p>'.ucwords($key).'</p>
+                                    <p>'.ucwords(__($key)).'</p>
                                 </a>
                             </li>';
         }
@@ -540,4 +540,12 @@ function sendMail($subject, $recipients, $message, $attachments = [])
         $status = "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     }
     return $status;
+}
+
+function __($key)
+{
+    $lang = config('lang');
+    if(isset($lang[$key])) return $lang[$key];
+
+    return $key;
 }

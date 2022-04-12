@@ -4,11 +4,11 @@
             <div class="page-inner py-5">
                 <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
                     <div>
-                        <h2 class="text-white pb-2 fw-bold">Create New <?=_ucwords($table)?></h2>
-                        <h5 class="text-white op-7 mb-2">Manage <?=_ucwords($table)?> Data</h5>
+                        <h2 class="text-white pb-2 fw-bold"><?= __('Create New '._ucwords($table))?></h2>
+                        <h5 class="text-white op-7 mb-2"><?= __('Manage '._ucwords($table).' Data')?></h5>
                     </div>
                     <div class="ml-md-auto py-2 py-md-0">
-                        <a href="<?=routeTo('crud/index',['table'=>$table])?>" class="btn btn-warning btn-round">Back</a>
+                        <a href="<?=routeTo('crud/index',['table'=>$table])?>" class="btn btn-warning btn-round"><?= __('Back') ?></a>
                     </div>
                 </div>
             </div>
@@ -45,15 +45,15 @@
                                 <?php endforeach ?>
                                 <?php if($table == 'messages'): ?>
                                 <div class="form-group">
-                                    <label for="">Attachments</label>
+                                    <label for=""><?= __('Attachments') ?></label>
                                     <input type="file" name="files[]" class="form-control" multiple>
                                 </div>
                                 <?php endif ?>
                                 <div class="form-group">
                                     <?php if($table == 'messages'): ?>
-                                        <button class="btn btn-primary">Send</button>
+                                        <button class="btn btn-primary"><?= __('Send') ?></button>
                                     <?php else: ?>
-                                        <button class="btn btn-primary">Submit</button>
+                                        <button class="btn btn-primary"><?= __('Submit') ?></button>
                                     <?php endif ?>
                                 </div>
                             </form>
