@@ -61,9 +61,55 @@
 	<script src="https://cdn.tiny.cloud/1/rsb9a1wqmvtlmij61ssaqj3ttq18xdwmyt7jg23sg1ion6kn/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 
     <script>
+		function example_image_upload_handler (blobInfo, success, failure, progress) {
+			var xhr, formData;
+
+			xhr = new XMLHttpRequest();
+			xhr.withCredentials = false;
+			xhr.open('POST', '<?=routeTo('crud/upload2')?>');
+
+			xhr.upload.onprogress = function (e) {
+				progress(e.loaded / e.total * 100);
+			};
+
+			xhr.onload = function() {
+				var json;
+
+				if (xhr.status === 403) {
+					failure('HTTP Error: ' + xhr.status, { remove: true });
+				return;
+				}
+
+				if (xhr.status < 200 || xhr.status >= 300) {
+					failure('HTTP Error: ' + xhr.status);
+				return;
+				}
+
+				json = JSON.parse(xhr.responseText);
+
+				if (!json || typeof json.location != 'string') {
+					failure('Invalid JSON: ' + xhr.responseText);
+					return;
+				}
+
+				success(json.location);
+			};
+
+			xhr.onerror = function () {
+				failure('Image upload failed due to a XHR Transport error. Code: ' + xhr.status);
+			};
+
+			formData = new FormData();
+			formData.append('file', blobInfo.blob(), blobInfo.filename());
+
+			xhr.send(formData);
+	  	};
       tinymce.init({
         selector: '.tinymce',
 		images_upload_url: '<?=routeTo('crud/upload')?>',
+		document_base_url: '<?=routeTo()?>',
+		relative_urls: false,
+		remove_script_host: false,
         plugins: [
           'a11ychecker','advlist','advcode','advtable','autolink','checklist','export',
           'lists','link','image','charmap','preview','anchor','searchreplace','visualblocks',
