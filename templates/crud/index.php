@@ -21,13 +21,31 @@
                             <?php if($success_msg): ?>
                             <div class="alert alert-success"><?=$success_msg?></div>
                             <?php endif ?>
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-lg" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body"></div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="table-responsive table-hover table-sales">
                                 <table class="table datatable">
                                     <thead>
                                         <tr>
                                             <th width="20px">#</th>
                                             <?php 
-                                            foreach(config('fields')[$table] as $field): 
+                                            $fields = config('fields')[$table];
+                                            foreach($fields as $field): 
                                                 $label = $field;
                                                 if(is_array($field))
                                                 {
@@ -48,7 +66,7 @@
                                                 <?=$index+1?>
                                             </td>
                                             <?php 
-                                            foreach(config('fields')[$table] as $key => $field): 
+                                            foreach($fields as $key => $field): 
                                                 $label = $field;
                                                 if(is_array($field))
                                                 {
@@ -61,8 +79,17 @@
                                                     $data_value = $data->{$field};
                                                 }
                                                 $label = _ucwords($label);
+
+                                                if($field == 'content'):
                                             ?>
+                                            <td>
+                                                <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModalLong" onclick='loadContent(<?=json_encode($data)?>)'>
+                                                    Lihat
+                                                </button>
+                                            </td>
+                                            <?php else: ?>
                                             <td><?=$data_value?></td>
+                                            <?php endif ?>
                                             <?php endforeach ?>
                                             <td>
                                                 <a href="<?=routeTo('crud/edit',['table'=>$table,'id'=>$data->id])?>" class="btn btn-sm btn-warning"><i class="fas fa-pencil-alt"></i> <?= __('Edit')?></a>
@@ -79,4 +106,11 @@
             </div>
         </div>
     </div>
+    <script>
+    function loadContent(data)
+    {
+        document.querySelector('.modal-title').innerHTML = data.title
+        document.querySelector('.modal-body').innerHTML = data.content
+    }
+    </script>
 <?php load_templates('layouts/bottom') ?>
