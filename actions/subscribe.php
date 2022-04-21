@@ -17,7 +17,7 @@ if(request() == 'POST')
     }
     
     set_flash_msg(['success'=>'Data berhasil disimpan']);
-    header('location:'.routeTo('register'));
+    header('location:'.routeTo('subscribe'));
     die();
 }
 
