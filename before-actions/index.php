@@ -2,6 +2,8 @@
 
 $route = get_route();
 
+if($route == 'register') return true;
+
 if(startWith($route,'app/db-')) return true;
 
 if(startWith($route,'api'))
