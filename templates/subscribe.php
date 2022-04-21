@@ -36,6 +36,9 @@
                                  <?php if($success_msg): ?>
                                 <div class="alert alert-success"><?=$success_msg?></div>
                                 <?php endif ?>
+                                 <?php if($error_msg): ?>
+                                <div class="alert alert-danger"><?=$error_msg?></div>
+                                <?php endif ?>
                                  <div class="login-det">
                                     <div class="form-row">
                                          <label for="">Masukkan Nama Lengkap</label>

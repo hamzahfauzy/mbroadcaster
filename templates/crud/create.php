@@ -18,6 +18,9 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-body">
+                            <?php if($error_msg): ?>
+                            <div class="alert alert-danger"><?=$error_msg?></div>
+                            <?php endif ?>
                             <form action="" method="post" enctype="multipart/form-data">
                                 <?php 
                                 foreach(config('fields')[$table] as $key => $field): 

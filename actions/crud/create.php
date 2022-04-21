@@ -1,6 +1,7 @@
 <?php
 
 $table = $_GET['table'];
+$error_msg = get_flash_msg('error');
 
 if(request() == 'POST')
 {
@@ -12,6 +13,20 @@ if(request() == 'POST')
         if($_POST['messages']['send_at'] == '')
         {
             unset($_POST['messages']['send_at']);
+        }
+    }
+
+    if($table == 'customers')
+    {
+        $customer = $db->single('customers',[
+            'email' => $_POST[$table]['email']
+        ]);
+
+        if(!empty($customer))
+        {
+            set_flash_msg(['error'=>'Gagal menyimpan data dikarenakan email sudah terdaftar']);
+            header('location:'.routeTo().'crud/create?table='.$table);
+            die();
         }
     }
 
@@ -59,4 +74,4 @@ if(request() == 'POST')
     header('location:'.routeTo().'crud/index?table='.$table);
 }
 
-return compact('table');
+return compact('table','error_msg');
